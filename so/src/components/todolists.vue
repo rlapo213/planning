@@ -1,0 +1,77 @@
+<template>
+  <div>
+    <div class="todo" :class="{'todo-check':todo.check}" v-for="(todo,idx) in todolist" :key="todo.name">
+      <button @click="checkThis(idx)">check</button>
+      <h1 class="n">{{todo.name}}</h1>
+      <button @click="deleteThis(idx)">delete</button>
+    </div>
+  </div>
+</template>
+
+<script>
+export default {
+  props: {
+    todolist: Array
+  },
+  methods: {
+    deleteThis(index) {
+      this.todolist.splice(index, 1);
+    },
+    checkThis(index) {
+      this.todolist[index].check = true;
+      // if(this.todolist[index].check%2==0){
+      //   this.todolist[index].check = false;
+      // }
+    }
+  }
+};
+</script>
+
+<style scoped>
+@import url("https://fonts.googleapis.com/css?family=Nanum+Gothic&display=swap");
+* {
+  font-family: "Nanum Gothic", sans-serif;
+}
+.todo {
+  background-color: whitesmoke;
+  display: flex;
+  font-size: 8px;
+  justify-content: space-between;
+  border-radius: 28px;
+  margin: 0 5%;
+}
+.todo-check > h1 {
+  text-decoration: line-through;
+}
+.n {
+  padding: 5px;
+}
+button {
+  justify-content: center;
+  background-color: #44c767;
+  border-radius: 10px;
+  border: 1px solid #18ab29;
+  display: inline-block;
+  cursor: pointer;
+  color: #ffffff;
+  font-family: Arial;
+  font-size: 15px;
+  text-decoration: none;
+  text-shadow: 0px 1px 0px #2f6627;
+}
+button:hover {
+  background-color: #5cbf2a;
+}
+/*
+
+check 선택하고 선택 해제 가능.
+공백으로 입력 시 경고
+중복으로 입력 시 경고 
+home.vue에서 변수들 전역변수로 저장 - vuex
+package list 에서 선택한 나라마다 짐 자동으로 추가해 주기.
+테이블 오버플로우는 글자 크기 줄이기.
+*/
+</style>
+
+
+
