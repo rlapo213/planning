@@ -29,7 +29,6 @@
     <input type="number" min="1" max="50" step="1" value="2" name="howMany" id="howMany" />
 
     <button id="confirm_button" @click="confirmValue">확인</button>
-    
   </div>
 </template>
 
@@ -40,10 +39,14 @@ export default {
   },
   methods: {
     confirmValue() {
-      this.$store.commit('confirmValue');
-      console.log(this.$store.state.nation)
-      if(this.$store.state.a){
-        this.$router.push('informations')
+      this.$store.commit("confirmValue");
+      if (this.$store.state.a) {
+        if (isNaN(this.$store.state.period) == false) {
+          this.$router.push("informations");
+        }
+        else{
+          alert("여행 기간을 설정해주세요.")
+        }
       }
     }
   }

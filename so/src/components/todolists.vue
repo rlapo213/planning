@@ -1,6 +1,7 @@
 <template>
   <div>
-    <div class="todo" :class="{'todo-check':todo.check}" v-for="(todo,idx) in todolist" :key="todo.name">
+    <div
+      class="todo" :class="{'todo-check':todo.check}" v-for="(todo,idx) in todolists" :key="todo.name">
       <button @click="checkThis(idx)">check</button>
       <h1 class="n">{{todo.name}}</h1>
       <button @click="deleteThis(idx)">delete</button>
@@ -10,18 +11,18 @@
 
 <script>
 export default {
+  data() {
+    return {};
+  },
   props: {
-    todolist: Array
+    todolists: Array
   },
   methods: {
     deleteThis(index) {
-      this.todolist.splice(index, 1);
+      this.todolists.splice(index, 1);
     },
     checkThis(index) {
-      this.todolist[index].check = true;
-      // if(this.todolist[index].check%2==0){
-      //   this.todolist[index].check = false;
-      // }
+      this.todolists[index].check = true;
     }
   }
 };
@@ -63,11 +64,9 @@ button:hover {
   background-color: #5cbf2a;
 }
 /*
-
 check 선택하고 선택 해제 가능.
 공백으로 입력 시 경고
 중복으로 입력 시 경고 
-home.vue에서 변수들 전역변수로 저장 - vuex
 package list 에서 선택한 나라마다 짐 자동으로 추가해 주기.
 테이블 오버플로우는 글자 크기 줄이기.
 */

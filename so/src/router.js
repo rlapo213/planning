@@ -1,6 +1,6 @@
 import Vue from 'vue'
 import Router from 'vue-router'
-import Homes from './views/Homes.vue'
+import Home from './views/Home.vue'
 import informations from './views/informations.vue'
 
 
@@ -12,8 +12,8 @@ export default new Router({
   routes: [
     {
       path: '/',
-      name: 'homes',
-      component: Homes
+      name: 'home',
+      component: Home
     },
     {
       path: '/informations',

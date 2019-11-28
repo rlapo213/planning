@@ -1,9 +1,9 @@
 <template>
     <tr>
-      <td class="n">{{timetable.name}}</td>
-      <td class="n">{{timetable.name1}}</td>
-      <td class="n">{{timetable.name3}}</td>
-      <td class="n">{{timetable.name4}}</td>
+      <td class="n">{{timetables.name}}</td>
+      <td class="n">{{timetables.name1}}</td>
+      <td class="n">{{timetables.name3}}</td>
+      <td class="n">{{timetables.name4}}</td>
       <td class="n" @click="$emit('click',$event)"> X</td>
     </tr>
 </template>
@@ -12,7 +12,7 @@
 <script>
 export default {
   props: {
-    timetable: Object,
+    timetables: Object,
   },
   methods: {
   }

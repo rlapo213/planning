@@ -26,7 +26,7 @@
           </tr>
         </thead>
         <tbody>
-          <timetable :timetable="timetable" @click="deleteThis(idx)" class="timet" v-for="(timetable,idx) in tt" :key="idx"></timetable>
+          <timetables :timetables="timetables" @click="deleteThis(idx)" class="timet" v-for="(timetables,idx) in tt" :key="idx"></timetables>
         </tbody>
       </table>      
 
@@ -38,7 +38,7 @@
         <button class="todobutton" @click="addtodo">ADD</button>
       </div>
       <br />
-      <todolist :todolist="data" />
+      <todolists :todolists="data" />
     </div>
   </div>
 </template>

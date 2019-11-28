@@ -2,18 +2,16 @@ import Vue from 'vue'
 import Vuex from 'vuex'
 
 Vue.use(Vuex)
-//선배 stroe.js에서 confirm을 a라는 변수로 받고 그거를 home.vue에 커밋해서 잘 되긴 하는데 a라는 변수를 이용하고 싶은데  
 export default new Vuex.Store({
   state: {
     //this.$store.state.변수명
     nation: "",
     people: Number,
     period: Number,
-    a: Boolean
+    a: Boolean,
   },
   mutations: {
-    confirmValue: function () {
-
+    confirmValue: function (state) {
       var country = document.getElementById("countries");
       var from_date = document.getElementById("from_date");
       var to_date = document.getElementById("to_date");
@@ -57,14 +55,15 @@ export default new Vuex.Store({
         "여행 기간 : " +
         left_date
       );
-      console.log(this.a)
       state.nation = country_value;
       state.people = howMany_value;
+
+
       state.period = left_date;
 
     }
   },
   actions: {
-
+    
   }
 })
