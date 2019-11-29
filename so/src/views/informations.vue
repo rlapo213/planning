@@ -1,5 +1,6 @@
 <template>
   <div class="home">
+    <div id="nation">{{this.$store.state.nation}}</div>
     <div id="left">
       <div class="createbox">
         <!-- 단기간 여행 -->
@@ -26,10 +27,15 @@
           </tr>
         </thead>
         <tbody>
-          <timetables :timetables="timetables" @click="deleteThis(idx)" class="timet" v-for="(timetables,idx) in tt" :key="idx"></timetables>
+          <timetables
+            :timetables="timetables"
+            @click="deleteThis(idx)"
+            class="timet"
+            v-for="(timetables,idx) in tt"
+            :key="idx"
+          ></timetables>
         </tbody>
-      </table>      
-
+      </table>
     </div>
     <div id="right">
       <div id="top">Package List</div>
@@ -53,25 +59,41 @@ export default {
   },
   methods: {
     addtodo() {
-      this.data.push({
-        name: this.todoname,
-        check: false
-      });
-      this.todoname = "";
+      for (let i = 0; i < this.$store.state.count; i++) {
+        if (this.todoname == this.data[i].name) {
+          this.k++;
+        }
+      }
+      if (this.todoname == "") {
+        alert("항목을 입력해주세요");
+      } else if (this.$store.state.count > 0 && this.k == 1) {
+        alert("중복된 항목입니다");
+        this.todoname = "";
+        this.k=0;
+      } else {
+        this.data.push({
+          name: this.todoname,
+          check: false
+        });
+        console.log(this.data[0].name);
+        this.$store.state.count++;
+        console.log(this.$store.state.count);
+        this.todoname = "";
+      }
     },
     addtimetable() {
       this.tt.push({
         name: this.date,
         name1: this.time,
         name3: this.doing,
-        name4: this.note,
+        name4: this.note
       });
       this.date = "";
       this.time = "";
       this.during = "";
       this.doing = "";
       this.note = "";
-      console.log("DSf")
+      console.log("DSf");
     },
     deleteThis(index) {
       this.tt.splice(index, 1);
@@ -88,15 +110,20 @@ export default {
       note: "",
       day: 0,
       tt: [],
+      k: 0
     };
   },
-  props:{
+  props: {
     //속성 값으로 넘겨받을때 쓰는거
   }
 };
 </script>
 
 <style scoped>
+#nation {
+  display: flex;
+  justify-content: center;
+}
 .home {
   display: flex;
 }

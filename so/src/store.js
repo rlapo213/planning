@@ -9,6 +9,7 @@ export default new Vuex.Store({
     people: Number,
     period: Number,
     a: Boolean,
+    count:0
   },
   mutations: {
     confirmValue: function (state) {

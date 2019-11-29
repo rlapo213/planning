@@ -20,6 +20,7 @@ export default {
   methods: {
     deleteThis(index) {
       this.todolists.splice(index, 1);
+      this.$store.state.count-=1;
     },
     checkThis(index) {
       this.todolists[index].check = true;
@@ -65,8 +66,6 @@ button:hover {
 }
 /*
 check 선택하고 선택 해제 가능.
-공백으로 입력 시 경고
-중복으로 입력 시 경고 
 package list 에서 선택한 나라마다 짐 자동으로 추가해 주기.
 테이블 오버플로우는 글자 크기 줄이기.
 */

@@ -8,7 +8,7 @@
       <option value="Russia">러시아</option>
       <option value="Germany">독일</option>
       <option value="Spain">스페인</option>
-      <option value="America">미국</option>
+      <option value="States">미국</option>
       <option value="China">중국</option>
       <option value="France">프랑스</option>
       <option value="UK">영국</option>
