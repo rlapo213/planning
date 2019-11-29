@@ -7,14 +7,11 @@
       <option value="Mexico">멕시코</option>
       <option value="Russia">러시아</option>
       <option value="Germany">독일</option>
-      <option value="Spain">스페인</option>
       <option value="States">미국</option>
       <option value="China">중국</option>
       <option value="France">프랑스</option>
       <option value="UK">영국</option>
-      <option value="Turkey">터키</option>
       <option value="Italy">이탈리아</option>
-      <option value="Korea">한국</option>
     </select>
     <br />
     <br />
@@ -41,11 +38,11 @@ export default {
     confirmValue() {
       this.$store.commit("confirmValue");
       if (this.$store.state.a) {
-        if (isNaN(this.$store.state.period) == false) {
+        if (isNaN(this.$store.state.period) == false && this.$store.state.period>0) {
           this.$router.push("informations");
         }
         else{
-          alert("여행 기간을 설정해주세요.")
+          alert("여행 기간을 확인해주세요")
         }
       }
     }

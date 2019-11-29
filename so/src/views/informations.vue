@@ -1,5 +1,8 @@
 <template>
-  <div class="home">
+  <div v-if="this.v==0" class="startPage">
+    <button @click="addPackageList()">넘어가기</button>
+  </div>
+  <div v-else class="home">
     <div id="nation">{{this.$store.state.nation}}</div>
     <div id="left">
       <div class="createbox">
@@ -58,6 +61,39 @@ export default {
     timetables
   },
   methods: {
+    addPackageList() {
+      const key = this.$store.state.nation;
+      switch (key) {
+        case "Mexico":
+          this.data[3].name = "긴바지";
+          break;
+        case "Russia":
+          this.data[3].name = "휴대용 전기장판";
+          break;
+        case "States":
+          this.data[3].name = "110볼트 돼지코";
+          break;
+        case "China":
+          this.data[3].name = "마스크";
+          break;
+        case "France":
+          this.data[3].name = "운동화";
+          break;
+        case "UK":
+          this.data[3].name = "240볼트 충전기";
+          break;
+        case "Italy":
+          this.data[3].name = "운동화";
+          break;
+          
+      }
+      if(this.$store.state.nation!=""){
+        this.v++;
+      }
+      else{
+        alert("뒤로 가서 나라를 선택하세요")
+      }
+    },
     addtodo() {
       for (let i = 0; i < this.$store.state.count; i++) {
         if (this.todoname == this.data[i].name) {
@@ -69,7 +105,7 @@ export default {
       } else if (this.$store.state.count > 0 && this.k == 1) {
         alert("중복된 항목입니다");
         this.todoname = "";
-        this.k=0;
+        this.k = 0;
       } else {
         this.data.push({
           name: this.todoname,
@@ -102,7 +138,24 @@ export default {
   data() {
     return {
       todoname: "",
-      data: [],
+      data: [
+        {
+          name: "여권",
+          check: false
+        },
+        {
+          name: "핸드폰 충전기",
+          check: false
+        },
+        {
+          name: "세면도구",
+          check: false
+        },
+        {
+          name: "",
+          check: false
+        },
+      ],
       date: "",
       time: "",
       during: "",
@@ -110,7 +163,8 @@ export default {
       note: "",
       day: 0,
       tt: [],
-      k: 0
+      k: 0,
+      v:0
     };
   },
   props: {
