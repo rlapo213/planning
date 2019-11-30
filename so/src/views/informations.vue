@@ -1,53 +1,54 @@
 <template>
   <div v-if="this.v==0" class="startPage">
-    <button @click="addPackageList()">넘어가기</button>
+    <button @click="setting()">넘어가기</button>
   </div>
   <div v-else class="home">
     <div id="nation">{{this.$store.state.nation}}</div>
-    <div id="left">
-      <div class="createbox">
-        <!-- 단기간 여행 -->
-        <div class="createinput">
-          <input type="text" class="b" v-model="date" placeholder="여행 날짜를 입력하세요" />
-          <input type="text" class="b" v-model="time" placeholder="시작 시간을 입력하세요(2시부터 -> 2)" />
-          <input type="text" class="b" v-model="during" placeholder="지속 시간을 입력하세요(3시간 동안 -> 3)" />
-          <input type="text" class="b" v-model="doing" placeholder="일정을 입력하세요" />
-          <input type="text" class="b" v-model="note" placeholder="비고를 입력하세요" />
+    <div class="main">
+      <div id="left">
+        <div class="createbox">
+          <!-- 단기간 여행 -->
+          <div class="createinput">
+            <input type="text" class="b" v-model="date" placeholder="여행 날짜를 입력하세요" />
+            <input type="text" class="b" v-model="time" placeholder="시간을 입력하세요" />
+            <input type="text" class="b" v-model="doing" placeholder="일정을 입력하세요" />
+            <input type="text" class="b" v-model="note" placeholder="비고를 입력하세요" />
+          </div>
+          <button @click="addtimetable">시간표 생성하기</button>
         </div>
-        <button @click="addtimetable">시간표 생성하기</button>
+        <table border="1">
+          <caption>
+            <strong>시간표</strong>
+          </caption>
+          <thead>
+            <tr>
+              <th>여행일</th>
+              <th>시간</th>
+              <th>일정</th>
+              <th>비고</th>
+              <th>삭제</th>
+            </tr>
+          </thead>
+          <tbody>
+            <timetables
+              :timetables="timetables"
+              @click="deleteThis(idx)"
+              class="timet"
+              v-for="(timetables,idx) in tt"
+              :key="idx"
+            ></timetables>
+          </tbody>
+        </table>
       </div>
-      <table border="1">
-        <caption>
-          <strong>시간표</strong>
-        </caption>
-        <thead>
-          <tr>
-            <th>여행일</th>
-            <th>시간</th>
-            <th>일정</th>
-            <th>비고</th>
-            <th>삭제</th>
-          </tr>
-        </thead>
-        <tbody>
-          <timetables
-            :timetables="timetables"
-            @click="deleteThis(idx)"
-            class="timet"
-            v-for="(timetables,idx) in tt"
-            :key="idx"
-          ></timetables>
-        </tbody>
-      </table>
-    </div>
-    <div id="right">
-      <div id="top">Package List</div>
-      <div id="mid">
-        <input type="text" class="todoinput" v-model="todoname" />
-        <button class="todobutton" @click="addtodo">ADD</button>
+      <div id="right">
+        <div id="top">Package List</div>
+        <div id="mid">
+          <input type="text" class="todoinput" v-model="todoname" />
+          <button class="todobutton" @click="addtodo">ADD</button>
+        </div>
+        <br />
+        <todolists :todolists="data" />
       </div>
-      <br />
-      <todolists :todolists="data" />
     </div>
   </div>
 </template>
@@ -61,7 +62,7 @@ export default {
     timetables
   },
   methods: {
-    addPackageList() {
+    setting() {
       const key = this.$store.state.nation;
       switch (key) {
         case "Mexico":
@@ -85,13 +86,16 @@ export default {
         case "Italy":
           this.data[3].name = "운동화";
           break;
-          
+        case "Germany":
+          this.data[3].name = "선글라스";
+          break;
       }
-      if(this.$store.state.nation!=""){
+      this.date = this.$store.state.stday;
+      this.time = "00:00";
+      if (this.$store.state.nation != "") {
         this.v++;
-      }
-      else{
-        alert("뒤로 가서 나라를 선택하세요")
+      } else {
+        alert("뒤로 가서 나라를 선택하세요");
       }
     },
     addtodo() {
@@ -118,18 +122,21 @@ export default {
       }
     },
     addtimetable() {
-      this.tt.push({
-        name: this.date,
-        name1: this.time,
-        name3: this.doing,
-        name4: this.note
-      });
-      this.date = "";
-      this.time = "";
-      this.during = "";
-      this.doing = "";
-      this.note = "";
-      console.log("DSf");
+      if (this.doing == "") {
+        alert("일정을 입력해주세요");
+      } else {
+        this.tt.push({
+          name: this.date,
+          name1: this.time,
+          name3: this.doing,
+          name4: this.note
+        });
+        this.date = "";
+        this.time = "";
+        this.doing = "";
+        this.note = "";
+        console.log("DSf");
+      }
     },
     deleteThis(index) {
       this.tt.splice(index, 1);
@@ -154,17 +161,16 @@ export default {
         {
           name: "",
           check: false
-        },
+        }
       ],
       date: "",
       time: "",
-      during: "",
       doing: "",
       note: "",
       day: 0,
       tt: [],
       k: 0,
-      v:0
+      v: 0
     };
   },
   props: {
@@ -179,6 +185,8 @@ export default {
   justify-content: center;
 }
 .home {
+}
+.main {
   display: flex;
 }
 @import url("https://fonts.googleapis.com/css?family=Nanum+Gothic&display=swap");
@@ -197,10 +205,10 @@ export default {
   flex-direction: row;
 }
 #left {
-  width: 65%;
+  width: 75vw;
 }
 #right {
-  width: 35%;
+  width: 25vw;
 }
 #top {
   display: flex;

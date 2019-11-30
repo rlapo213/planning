@@ -4,7 +4,7 @@
       <td class="n">{{timetables.name1}}</td>
       <td class="n">{{timetables.name3}}</td>
       <td class="n">{{timetables.name4}}</td>
-      <td class="n" @click="$emit('click',$event)"> X</td>
+      <td class="n" id="delete" @click="$emit('click',$event)"> X</td>
     </tr>
 </template>
 
@@ -37,6 +37,7 @@ export default {
 }
 .n {
   padding: 5px;
+  text-align: center;
 }
 button {
   background-color: #44c767;
@@ -53,6 +54,9 @@ button {
 }
 button:hover {
   background-color: #5cbf2a;
+}
+#delete{
+  cursor: pointer;
 }
 </style>
 

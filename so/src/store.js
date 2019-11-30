@@ -9,7 +9,9 @@ export default new Vuex.Store({
     people: Number,
     period: Number,
     a: Boolean,
-    count:4
+    count:4,
+    stday : "",
+    enday : ""
   },
   mutations: {
     confirmValue: function (state) {
@@ -58,7 +60,8 @@ export default new Vuex.Store({
       );
       state.nation = country_value;
       state.people = howMany_value;
-
+      state.stday = from_date_value;
+      state.enday = to_date_value;
 
       state.period = left_date;
 
