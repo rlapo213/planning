@@ -1,7 +1,7 @@
 <template>
   <div class="information">
-    <h1>여행정보입력</h1>
-    <h3 style="display: inline;">여행장소입력</h3>
+    <div id="in">여행정보입력</div>
+    <h2 style="display: inline;">여행장소입력</h2>
     <br />
     <select name="countries" id="countries">
       <option value="Mexico">멕시코</option>
@@ -15,17 +15,17 @@
     </select>
     <br />
     <br />
-    <h3>여행 기간 설정</h3>
-    <input type="date" id="from_date" />부터
+    <h2>여행 기간 설정</h2>
+    <input type="date" id="from_date" class="g" />부터
     <br />
-    <input type="date" id="to_date" />까지
+    <input type="date" id="to_date" class="g" />까지
     <br />
     <br />
 
-    <h3>여행 인원 수</h3>
-    <input type="number" min="1" max="50" step="1" value="2" name="howMany" id="howMany" />
+    <h2>여행 인원 수</h2>
+    <input type="number" min="1" max="50" step="1" value="2" name="howMany" id="howMany" class="g"  />
 
-    <button id="confirm_button" @click="confirmValue">확인</button>
+    <button id="confirm_button" @click="confirmValue()">확인</button>
   </div>
 </template>
 
@@ -50,5 +50,48 @@ export default {
 };
 </script>
 
+
 <style>
+@import url("https://fonts.googleapis.com/css?family=Jua&display=swap");
+.information{
+  background-image: url("../assets/map.png");
+  background-size: 100vw 100vh;
+  background-repeat: no-repeat;
+  width: 100vw;
+  height: 100vh;
+  overflow: hidden;
+}
+
+
+#in {
+  font-family: "Jua", sans-serif;
+  text-align: center;
+  font-size: 4em;
+  margin-top: 10px;
+  margin-bottom: 0.8em;
+}
+
+h2 {
+  font-family: "Jua", sans-serif;
+  color: black;
+  margin-left: 100px;
+  font-size: 2.5em;
+}
+
+.g,
+#countries{
+  border: 2px solid black;
+  height: 30px;
+  padding: 3px;
+  margin: 0.5em 0.5em 0.5em 7.5vw;
+}
+
+
+#confirm_button {
+  border: 2px solid black;
+  margin: 0.5em;
+  padding: 0.4em;
+  background-color: #ffffff;
+  cursor: pointer;
+}
 </style>

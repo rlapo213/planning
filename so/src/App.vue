@@ -8,5 +8,6 @@
 *{
   margin: 0;
   box-sizing: border-box;
+  user-select: none;
 }
 </style>
