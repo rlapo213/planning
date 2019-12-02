@@ -39,9 +39,9 @@ export default {
   display: flex;
   font-size: 0.65em;
   justify-content: space-between;
-  border-radius: 10px;
+  border-radius: 30px;
   margin: 0.3em 5%;
-  
+
 }
 .todo-check > h1 {
   text-decoration: line-through;
@@ -52,7 +52,7 @@ export default {
 .tbu {
   justify-content: center;
   background-color: #44c767;
-  border-radius: 10px;
+  border-radius: 15px;
   border: 1px solid #18ab29;
   display: inline-block;
   cursor: pointer;

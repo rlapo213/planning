@@ -41,12 +41,12 @@
         <div>문화의 차이를 인정해요</div>
         <div>소매치기를 조심하세요</div>
         <div>여행국의 질병을 확인하세요</div>
-        <div>외교통상부 홈페이지에서 </div>
+        <div>외교통상부 홈페이지에서</div>
         <div>여행지의 안전정보를 확인하세요</div>
       </div>
       <div class="cu">
         <div ref="country" id="con"></div>
-        <div ref="careful"></div>
+        <div ref="careful" class="jj"></div>
       </div>
     </div>
     <div id="right">
@@ -89,7 +89,7 @@ export default {
           this.data[3].name = "운동화";
           break;
         case "UK":
-          this.data[3].name = "240볼트 충전기";
+          this.data[3].name = "240볼트 어댑터";
           break;
         case "Italy":
           this.data[3].name = "운동화";
@@ -145,45 +145,62 @@ export default {
     },
     care() {
       const key = this.$store.state.nation;
-      this.$refs.back.style.backgroundImage = require('../assets/country/mexico.jpg')
-      console.log("hi")
+      console.log("hi");
       switch (key) {
         case "Mexico":
+          this.$refs.back.style.backgroundImage = `url('${require("../assets/country/mexico.jpg")}')`;
+          this.$refs.back.style.backgroundSize = "100vw 100vh";
+          // this.$refs.back.style.opacity = "100vw 100vh";
           this.$refs.country.innerHTML = "멕시코";
           this.$refs.careful.innerHTML =
             "아무 의류나 허용되지 않는 관광지가 있으므로 긴바지를 챙겨가세요 일교차가 크니 여벌 옷을 준비하세요";
           break;
         case "Russia":
+          this.$refs.back.style.backgroundImage = `url('${require("../assets/country/russia.webp")}')`;
+          this.$refs.back.style.backgroundSize = "100vw 100vh";
           this.$refs.country.innerHTML = "러시아";
           this.$refs.careful.innerHTML =
             "겨울 옷을 챙겨가세요 유색인종에 대한 폭력을 조심하세요";
           break;
         case "States":
+          this.$refs.back.style.backgroundImage = `url('${require("../assets/country/states.jpg")}')`;
+          this.$refs.back.style.backgroundSize = "100vw 100vh";
           this.$refs.country.innerHTML = "미국";
           this.$refs.careful.innerHTML =
             "주마다 법규의 차이가 있으니 주의하세요 신체 접촉에 특히나 조심하세요";
           break;
         case "China":
+          this.$refs.back.style.backgroundImage = `url('${require("../assets/country/china.jpg")}')`;
+          this.$refs.back.style.backgroundSize = "100vw 100vh";
           this.$refs.country.innerHTML = "중국";
           this.$refs.careful.innerHTML =
             "따뜻하게 니트나 겉옷을 챙겨가세요 택시 사기를 주의하세요";
           break;
         case "France":
+          this.$refs.back.style.backgroundImage = `url('${require("../assets/country/france.jpg")}')`;
+          this.$refs.back.style.backgroundSize = "100vw 100vh";
           this.$refs.country.innerHTML = "프랑스";
           this.$refs.careful.innerHTML =
             "돌길이 많고 많이 걸어야 하기 때문에 편한 운동화를 챙겨가세요 겉옷을 챙겨가세요";
           break;
         case "UK":
+          this.$refs.back.style.backgroundImage = `url('${require("../assets/country/UK.jpg")}')`;
+          this.$refs.back.style.backgroundSize = "100vw 150vh";
           this.$refs.country.innerHTML = "영국";
-          this.$refs.careful.innerHTML ="비가 많이 오니 우산,우비를 챙겨가세요 겉옷을 챙겨가세요";
+          this.$refs.careful.innerHTML =
+            "비가 많이 오니 우산,우비를 챙겨가세요 겉옷을 챙겨가세요 240v 어댑터를 챙겨가세요 ";
           break;
         case "Italy":
+          this.$refs.back.style.backgroundImage = `url('${require("../assets/country/Italy.jpg")}')`;
+          this.$refs.back.style.backgroundSize = "100vw 120vh";
           this.$refs.country.innerHTML = "이탈리아";
           this.$refs.careful.innerHTML =
             "돌길이 많고 많이 걸어야 하기 때문에 편한 운동화를 챙겨가세요";
 
           break;
         case "Germany":
+          this.$refs.back.style.backgroundImage = `url('${require("../assets/country/germany.jpg")}')`;
+          this.$refs.back.style.backgroundSize = "100vw 150vh";
           this.$refs.country.innerHTML = "독일";
           this.$refs.careful.innerHTML =
             "돌길이 많고 많이 걸어야 하기 때문에 편한 운동화를 챙겨가세요";
@@ -236,21 +253,20 @@ export default {
 <style>
 @import url("https://fonts.googleapis.com/css?family=Nanum+Gothic&display=swap");
 
-
-#con{
+#con {
   font-size: 1.8em;
 }
 
-#to{
+#to {
   font-size: 1.8em;
 }
-.common{
+.common {
   display: flex;
   flex-direction: column;
   text-align: center;
   margin-bottom: 1em;
 }
-.cu{
+.cu {
   display: flex;
   flex-direction: column;
   text-align: center;
@@ -261,6 +277,8 @@ export default {
   flex-direction: column;
   width: 25vw;
   font-size: 1.2em;
+  margin: 2em;
+  font-weight: bold;
 }
 
 .main {
@@ -268,7 +286,6 @@ export default {
   width: 100vw;
   height: 100vh;
   justify-content: space-around;
-  
 }
 * {
   font-family: "Nanum Gothic", sans-serif;
@@ -286,6 +303,16 @@ export default {
 .createbox {
   display: flex;
   flex-direction: row;
+}
+.jj {
+  margin: 0 2em;
+}
+
+#right {
+  margin: 2em;
+}
+#left {
+  margin: 2em;
 }
 
 #top {
@@ -328,7 +355,7 @@ export default {
 td {
   text-align: center;
 }
-#ctime{
+#ctime {
   margin: 1em;
   background-color: #44c767;
   border-radius: 28px;
@@ -342,12 +369,12 @@ td {
   text-decoration: none;
   text-shadow: 0px 1px 0px #2f6627;
 }
-.tl{
+.tl {
   margin-top: 1em;
   margin-left: 2em;
   align-items: center;
 }
-strong{
+strong {
   font-size: 2em;
 }
 </style>
