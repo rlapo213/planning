@@ -295,6 +295,7 @@ export default {
   width: 14vw;
   border: 1px solid black;
   margin: 0.1em;
+  border-radius: 5px;
 }
 .createinput {
   display: flex;
@@ -325,6 +326,7 @@ export default {
   flex-direction: row;
   align-items: center;
   justify-content: center;
+  overflow: hidden;
 }
 .todoinput {
   width: 15vw;
@@ -343,6 +345,7 @@ export default {
   text-decoration: none;
   text-shadow: 0px 1px 0px #2f6627;
   margin: 0 1%;
+  overflow: hidden;
 }
 .todobutton:hover {
   background-color: #5cbf2a;

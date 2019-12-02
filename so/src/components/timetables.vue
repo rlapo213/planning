@@ -25,7 +25,12 @@ export default {
 #delete{
   cursor: pointer;
 }
-
+.n{
+  color:#3efa7d;
+  font-weight: bold;
+  font-size: 1.3em;
+  text-shadow: 0 0 1.5px black;
+}
 </style>
 
 
